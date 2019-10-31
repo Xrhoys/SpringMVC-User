@@ -23,18 +23,19 @@ public class UserDaoImpl implements UserDao {
 
   public void register(User user) {
 
-    String sql = "insert into Employees values(0,?,?,?,?,?,?,?,?,?)";
+    String sql = "insert into Employees values(0,?,?,?,?,?,?,?,?,?,?,?)";
 
     jdbcTemplate.update(sql, new Object[]{
             user.getName(), user.getLastname(), user.getMobile_phone(),
             user.getHome_phone(), user.getAddress(), user.getPostal(),
-            user.getCity(), user.getEmail(), user.getWork_phone()
+            user.getCity(), user.getEmail(), user.getWork_phone(), user.getPassword(),
+            user.getUsername()
     });
   }
 
   public User validateUser(Login login) {
 
-    String sql = "SELECT* FROM Employees WHERE id='" + login.getUsername() + "'AND PWD='" + login.getPassword()
+    String sql = "SELECT* FROM Employees WHERE Username='" + login.getUsername() + "'AND PWD='" + login.getPassword()
             + "'";
 
     List<User> users = jdbcTemplate.query(sql, new UserMapper());
@@ -50,7 +51,7 @@ class UserMapper implements RowMapper<User> {
     User user = new User();
 
     user.setUsername(rs.getString("username"));
-    user.setPassword(rs.getString("password"));
+    user.setPassword(rs.getString("pwd"));
     user.setLastname(rs.getString("LASTNAME"));
     user.setName(rs.getString("NAME"));
     user.setAddress(rs.getString("ADDRESS"));
@@ -60,6 +61,7 @@ class UserMapper implements RowMapper<User> {
     user.setWork_phone(rs.getString("WORK_PHONE"));
     user.setMobile_phone("MOBILE_PHONE");
     user.setPostal(rs.getString("POSTAL"));
+    user.setId(rs.getString("ID"));
 
     return user;
   }
