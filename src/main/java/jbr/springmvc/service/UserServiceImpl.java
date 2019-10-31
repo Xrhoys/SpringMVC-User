@@ -19,4 +19,7 @@ public class UserServiceImpl implements UserService {
     return userDao.validateUser(login);
   }
 
+  public User selectByID(int id) { return userDao.selectByID(id);}
+
+  public void removeByID(int id) { userDao.removeByID(id);}
 }

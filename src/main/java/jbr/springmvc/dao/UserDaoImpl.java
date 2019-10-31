@@ -43,6 +43,21 @@ public class UserDaoImpl implements UserDao {
     return users.size() > 0 ? users.get(0): null;
   }
 
+  public User selectByID(int id){
+
+    String sql = "SELECT * FROM Employee WHERE ID=''" + id +"''";
+
+    List<User> users = jdbcTemplate.query(sql, new UserMapper());
+
+    return users.get(0);
+  }
+
+  public void removeByID(int id){
+
+    String sql = "DELETE FROM EMPLOYEES WHERE ID='" + id + "'";
+
+    System.out.println("Removed! ID = " + id + "");
+  }
 }
 
 class UserMapper implements RowMapper<User> {
