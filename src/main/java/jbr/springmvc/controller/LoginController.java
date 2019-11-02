@@ -14,6 +14,8 @@ import jbr.springmvc.model.Login;
 import jbr.springmvc.model.User;
 import jbr.springmvc.service.UserService;
 
+import java.util.List;
+
 @Controller
 public class LoginController {
 
@@ -36,8 +38,9 @@ public class LoginController {
     User user = userService.validateUser(login);
 
     if (null != user) {
+      List<User> users = userService.getUserList();
       mav = new ModelAndView("welcome");
-      mav.addObject("firstname", user.getName());
+      mav.addObject("users", users);
     } else {
       mav = new ModelAndView("login");
       mav.addObject("message", "Username or Password is wrong!!");

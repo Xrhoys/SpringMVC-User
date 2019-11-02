@@ -3,6 +3,8 @@ package jbr.springmvc.dao;
 import jbr.springmvc.model.Login;
 import jbr.springmvc.model.User;
 
+import java.util.List;
+
 public interface UserDao {
 
   void register(User user);
@@ -12,4 +14,6 @@ public interface UserDao {
   User selectByID(int id);
 
   void removeByID(int id);
+
+  List<User> getUserList();
 }

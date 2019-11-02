@@ -45,7 +45,7 @@ public class UserDaoImpl implements UserDao {
 
   public User selectByID(int id){
 
-    String sql = "SELECT * FROM Employee WHERE ID=''" + id +"''";
+    String sql = "SELECT * FROM Employees WHERE ID='" + id +"'";
 
     List<User> users = jdbcTemplate.query(sql, new UserMapper());
 
@@ -54,9 +54,20 @@ public class UserDaoImpl implements UserDao {
 
   public void removeByID(int id){
 
-    String sql = "DELETE FROM EMPLOYEES WHERE ID='" + id + "'";
+    String sql = "DELETE FROM Employees WHERE ID='" + id + "'";
 
     System.out.println("Removed! ID = " + id + "");
+
+    jdbcTemplate.update(sql);
+  }
+
+  public List<User> getUserList(){
+
+    String sql = "SELECT * FROM Employees";
+
+    List<User> users = jdbcTemplate.query(sql, new UserMapper());
+
+    return users;
   }
 }
 
