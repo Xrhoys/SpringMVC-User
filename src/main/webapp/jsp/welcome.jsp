@@ -11,7 +11,11 @@
 </head>
 <body class="bg-dark container">
 	<div class="jumbotron shadow rounded position-relative row d-flex justify-content-center" style="min-width: 1110px">
-		<h1>Welcome! ${id}</h1>
+		<div class="row w-100">
+			<h1 class="col text-left">Welcome!</h1>
+			<h2 class="col text-center">User ID: ${id}</h2>
+			<h3 class="col text-right"><a href="disconnect">Disconnect</a></h3>
+		</div>
 		<table class="table">
 			<thread>
 				<tr>
