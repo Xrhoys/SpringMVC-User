@@ -6,38 +6,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
+<body class="bg-dark container">
 
 	<form:form id="loginForm" modelAttribute="login" action="loginProcess"
-		method="post">
+		method="post" class="jumbotron shadow rounded">
 		<table align="center">
 			<tr>
-				<td><form:label path="username">Username: </form:label></td>
-				<td><form:input path="username" name="username" id="username" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="password">Password:</form:label></td>
-				<td><form:password path="password" name="password"
-						id="password" /></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td align="left"><form:button id="login" name="login">Login</form:button></td>
-			</tr>
-
-			<tr></tr>
-			<tr>
-				<td></td>
-				<td><a href="home.jsp">Home</a></td>
+				<td style="font-style: italic; color: red;">${message}</td>
 			</tr>
 		</table>
+
+		<div class="form-group">
+			<form:label path="username" class="">Username: </form:label>
+			<form:input path="username" name="username" id="username" class="form-control" />
+			<form:errors path="username"/>
+		</div>
+		<div class="form-group">
+			<form:label path="password">Password:</form:label>
+			<form:password path="password" name="password" id="password" class="form-control"/>
+			<form:errors path="password"/>
+		</div>
+		<form:button id="login" name="login" class="btn btn-primary">Login</form:button>
+		<p class=""><a href="#"> Forgot password?</a></p>
 	</form:form>
-	<table align="center">
-		<tr>
-			<td style="font-style: italic; color: red;">${message}</td>
-		</tr>
-	</table>
 
 </body>
 </html>

@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>${user.getName()}</title>
+    <title>${user.getLastName()}</title>
 
     <div>
         <p>${user.getName()}</p>
