@@ -12,6 +12,7 @@
 	<table>
 		<tr>
 			<td>Welcome</td>
+			<td> ${id}</td>
 		</tr>
 		<tr>
 			<table>

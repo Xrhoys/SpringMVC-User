@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +21,10 @@ public class RegistrationController {
 
   @RequestMapping(value = "/register", method = RequestMethod.GET)
   public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
+
+    if (request.getSession().getAttribute("id") != null){
+      return new ModelAndView("redirect:/login");
+    }
     ModelAndView mav = new ModelAndView("register");
     mav.addObject("user", new User());
 
@@ -29,6 +34,10 @@ public class RegistrationController {
   @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
   public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("user") User user) {
+
+    if (request.getSession().getAttribute("id") != null){
+      return new ModelAndView("redirect:/login");
+    }
 
     userService.register(user);
 
