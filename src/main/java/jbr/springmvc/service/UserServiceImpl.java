@@ -26,4 +26,5 @@ public class UserServiceImpl implements UserService {
   public void removeByID(int id) { userDao.removeByID(id);}
 
   public List<User> getUserList() { return userDao.getUserList();}
+
 }
